@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Case File 11:59</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- BODY:START -->
+<canvas id="rain" aria-hidden="true"></canvas>
+<div id="embers" aria-hidden="true"></div>
+
+<!-- HUD -->
+<header id="hud" hidden>
+    <div id="hudChapter" class="hud-chapter"></div>
+    <div class="hud-actions">
+        <button id="notesBtn" class="hud-btn" type="button" aria-label="Case notes">
+            <svg viewBox="0 0 16 18" width="14" height="16" aria-hidden="true"><rect x="2" y="1" width="12" height="16" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 6h6M5 9h6M5 12h4" stroke="currentColor" stroke-width="1.3"/></svg>
+            <span class="hud-btn-label">Case notes</span>
+        </button>
+        <button id="hintBtn" class="hud-btn" type="button" aria-label="Ask Ember for a hint">
+            <span class="hud-btn-label">Ask Ember</span>
+            <span id="hintPips" class="pips" aria-hidden="true"></span>
+        </button>
+    </div>
+</header>
+<button id="soundBtn" class="sound-btn" type="button" aria-pressed="true">Sound on</button>
+
+<!-- COVER -->
+<section id="cover-screen" class="screen active" aria-label="Case file cover">
+    <div class="folder">
+        <div class="folder-tab">No. 11:59</div>
+        <div class="folder-body">
+            <p class="folder-kicker">Department of Magical Law Enforcement</p>
+            <h1 class="folder-title">Case File<br><span>11:59</span></h1>
+            <button id="classifiedStamp" class="classified" type="button" aria-label="Classified">Classified</button>
+            <div class="folder-for" id="folderFor"><span class="hand-fallback">For the eyes of Detective Kriti only.</span></div>
+            <div class="folder-rule"></div>
+            <p class="folder-small">Sound on. Lights low.</p>
+            <button id="openFileBtn" class="btn primary" type="button">Open the file</button>
+            <p id="resumeNote" class="folder-resume" hidden></p>
+        </div>
+    </div>
+</section>
+
+<!-- COMIC INTRO -->
+<section id="comic-screen" class="screen" aria-label="Comic introduction">
+    <div class="comic-wrap">
+        <div id="comicPanel" class="comic-panel" tabindex="0"></div>
+        <div class="comic-foot">
+            <span id="comicCount" class="comic-count"></span>
+            <span class="comic-tap">Tap to continue</span>
+        </div>
+    </div>
+</section>
+
+<!-- CHAPTER 1 -->
+<section id="courtyard-screen" class="screen" aria-label="Chapter 1, The Courtyard">
+    <div class="chapter-wrap wide">
+        <div class="chapter-head">
+            <p class="eyebrow">Chapter 1</p>
+            <h2>The Courtyard</h2>
+            <p class="chapter-sub">Move your wand-light across the dark. Tap anything that glows.</p>
+        </div>
+        <div id="scene" class="scene"></div>
+        <div class="satchel">
+            <div class="satchel-head">
+                <span>Satchel</span>
+                <span id="evidenceCount" class="count">Evidence 0 / 9</span>
+            </div>
+            <div id="satchelSlots" class="satchel-slots"></div>
+        </div>
+    </div>
+</section>
+
+<!-- CHAPTER 2 -->
+<section id="interro-screen" class="screen" aria-label="Chapter 2, The Interrogations">
+    <div class="chapter-wrap">
+        <div class="chapter-head">
+            <p class="eyebrow">Chapter 2</p>
+            <h2>The Interrogations</h2>
+            <p class="chapter-sub">Find the one statement each suspect can't defend, and expose it with the right evidence.</p>
+        </div>
+        <div id="suspectTabs" class="suspect-tabs"></div>
+        <div id="interroStage" class="interro-stage"></div>
+    </div>
+</section>
+
+<!-- PORTRAIT GATE -->
+<section id="gate-screen" class="screen" aria-label="The Portrait Gate">
+    <div class="chapter-wrap">
+        <div class="chapter-head">
+            <p class="eyebrow">The Tower Door</p>
+            <h2>The Portrait Gate</h2>
+        </div>
+        <div id="gateStage" class="gate-stage"></div>
+    </div>
+</section>
+
+<!-- CHAPTER 3 -->
+<section id="board-screen" class="screen" aria-label="Chapter 3, The Evidence Board">
+    <div class="chapter-wrap wide">
+        <div class="chapter-head">
+            <p class="eyebrow">Chapter 3</p>
+            <h2>The Evidence Board</h2>
+            <p class="chapter-sub">Rebuild the night. Pin every event to its time, and tie every piece of evidence to the person it belongs to.</p>
+        </div>
+        <div id="boardStage" class="board-stage"></div>
+    </div>
+</section>
+
+<!-- CHAPTER 4 -->
+<section id="vault-screen" class="screen" aria-label="Chapter 4, The Vault Cipher">
+    <div class="chapter-wrap wide">
+        <div class="chapter-head">
+            <p class="eyebrow">Chapter 4</p>
+            <h2>The Vault Cipher</h2>
+            <p class="chapter-sub">Odessa's note is locked in a cipher. The vault is locked with four digits.</p>
+        </div>
+        <div id="vaultStage" class="vault-stage"></div>
+    </div>
+</section>
+
+<!-- ACCUSATION -->
+<section id="accuse-screen" class="screen" aria-label="The Accusation">
+    <div class="chapter-wrap">
+        <div class="chapter-head">
+            <p class="eyebrow">Final</p>
+            <h2>The Accusation</h2>
+            <p class="chapter-sub">Name who did it, how, and why. All three must be right.</p>
+        </div>
+        <div id="accuseStage" class="accuse-stage"></div>
+    </div>
+</section>
+
+<!-- REVEAL -->
+<section id="reveal-screen" class="screen" aria-label="The reveal">
+    <div id="revealStage" class="reveal-stage"></div>
+    <div id="goldFlood" class="gold-flood" aria-hidden="true"></div>
+</section>
+
+<!-- MODAL -->
+<div id="modal" class="modal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div id="modalArt" class="modal-art"></div>
+        <div class="modal-body">
+            <h3 id="modalTitle"></h3>
+            <div id="modalText"></div>
+            <div id="modalButtons" class="modal-buttons"></div>
+        </div>
+    </div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- BODY:END -->
+
+<script src="lib/confetti.js"></script>
+<script src="lib/vara.min.js"></script>
+<script src="lib/handwriting.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
